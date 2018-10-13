@@ -69,6 +69,11 @@ public class Client extends javax.swing.JFrame {
         jLabelActionEndDate = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jComboAbilities = new javax.swing.JComboBox<>();
+        jButtonFinishedAction = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabelFinishedActionType = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabelFinishedActionAction = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelCurrentLevel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -179,6 +184,21 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
+        jButtonFinishedAction.setText("Get finished action");
+        jButtonFinishedAction.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonFinishedActionMouseClicked(evt);
+            }
+        });
+
+        jLabel13.setText("Type:");
+
+        jLabelFinishedActionType.setText("STUDY_ABILITY");
+
+        jLabel14.setText("Action:");
+
+        jLabelFinishedActionAction.setText("FREE");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -186,6 +206,7 @@ public class Client extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonFinishedAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonActionDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonSkillsDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -229,7 +250,15 @@ public class Client extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelActionEndDate))
-                    .addComponent(jComboAbilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboAbilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelFinishedActionType)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelFinishedActionAction)))
                 .addContainerGap(163, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -267,7 +296,14 @@ public class Client extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jComboAbilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(457, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonFinishedAction)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabelFinishedActionType)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabelFinishedActionAction))
+                .addContainerGap(428, Short.MAX_VALUE))
         );
 
         jTabbedPaneMain.addTab("Receive information", jPanel1);
@@ -456,6 +492,13 @@ public class Client extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jButtonFinishedActionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFinishedActionMouseClicked
+        String result = this.server.sendMessage("10005 GET");
+        String[] values = defaultParseLine(result);
+        this.jLabelFinishedActionType.setText(values[0]);
+        this.jLabelFinishedActionAction.setText(values[1]);
+    }//GEN-LAST:event_jButtonFinishedActionMouseClicked
+
     private void cleanValues() {
         this.jLabelConnectToServed.setText("");
         
@@ -477,6 +520,9 @@ public class Client extends javax.swing.JFrame {
         this.jLabelActionEndDate.setText("");
         
         this.jComboAbilities.removeAllItems();
+        
+        this.jLabelFinishedActionType.setText("");
+        this.jLabelFinishedActionAction.setText("");
     }
     
     private String[] defaultParseLine(String line) {
@@ -537,6 +583,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JButton jButtonActionDetails;
     private javax.swing.JButton jButtonConnectToServer;
     private javax.swing.JButton jButtonDisconnectFromServer;
+    private javax.swing.JButton jButtonFinishedAction;
     private javax.swing.JButton jButtonSkillsDetails;
     private javax.swing.JButton jButtonStorageDetails;
     private javax.swing.JComboBox<Ability> jComboAbilities;
@@ -545,6 +592,8 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -560,6 +609,8 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelConnectToServed;
     private javax.swing.JLabel jLabelCurrentLevel;
     private javax.swing.JLabel jLabelExperience;
+    private javax.swing.JLabel jLabelFinishedActionAction;
+    private javax.swing.JLabel jLabelFinishedActionType;
     private javax.swing.JLabel jLabelIcicles;
     private javax.swing.JLabel jLabelNextExperience;
     private javax.swing.JLabel jLabelSnowballs;
