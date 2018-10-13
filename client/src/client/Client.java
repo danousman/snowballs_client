@@ -21,6 +21,7 @@ public class Client extends javax.swing.JFrame {
     private Server server;
     private String login;
     private List<Skill> skills;
+    private List<Ability> abilities;
 
     /**
      * Creates new form Client
@@ -57,6 +58,17 @@ public class Client extends javax.swing.JFrame {
         jLabelStorageSize = new javax.swing.JLabel();
         jButtonSkillsDetails = new javax.swing.JButton();
         jComboBoxSkills = new javax.swing.JComboBox<>();
+        jButtonActionDetails = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabelActionType = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabelActionAction = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabelActionStartDate = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabelActionEndDate = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jComboAbilities = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabelCurrentLevel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -137,6 +149,36 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
+        jButtonActionDetails.setText("Get action details");
+        jButtonActionDetails.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonActionDetailsMouseClicked(evt);
+            }
+        });
+
+        jLabel9.setText("Type:");
+
+        jLabelActionType.setText("STUDY_ABILITY");
+
+        jLabel10.setText("Action:");
+
+        jLabelActionAction.setText("FREE");
+
+        jLabel11.setText("Start date:");
+
+        jLabelActionStartDate.setText("2018-10-13T23:44:20.877");
+
+        jLabel12.setText("End date:");
+
+        jLabelActionEndDate.setText("jLabel13");
+
+        jButton1.setText("Get abilities details");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -144,6 +186,8 @@ public class Client extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonActionDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonSkillsDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonStorageDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -168,7 +212,24 @@ public class Client extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelStorageSize))
-                    .addComponent(jComboBoxSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelActionType)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelActionAction)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelActionStartDate)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelActionEndDate))
+                    .addComponent(jComboAbilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(163, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -191,7 +252,22 @@ public class Client extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSkillsDetails)
                     .addComponent(jComboBoxSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonActionDetails)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabelActionType)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabelActionAction)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabelActionStartDate)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabelActionEndDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jComboAbilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(457, Short.MAX_VALUE))
         );
 
         jTabbedPaneMain.addTab("Receive information", jPanel1);
@@ -343,6 +419,43 @@ public class Client extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSkillsDetailsActionPerformed
 
+    private void jButtonActionDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActionDetailsMouseClicked
+        String result = this.server.sendMessage("10003 GET");
+        String[] values = defaultParseLine(result);
+        this.jLabelActionType.setText(values[0]);
+        this.jLabelActionAction.setText(values[1]);
+        this.jLabelActionStartDate.setText(values[2]);
+        this.jLabelActionEndDate.setText(values[3]);
+    }//GEN-LAST:event_jButtonActionDetailsMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        this.abilities = new ArrayList<>();
+        String result = this.server.sendMessage("10004 GET");
+        Map<Integer, String[]> values = specialParseLine(result);
+        for (Map.Entry<Integer, String[]> entry : values.entrySet()) {
+            String[] value = entry.getValue();
+            Ability ability = new Ability(
+                    Long.valueOf(value[0]), 
+                    value[1],
+                    value[2],
+                    value[3],
+                    Integer.valueOf(value[4]),
+                    Integer.valueOf(value[5]),
+                    Integer.valueOf(value[6]),
+                    Integer.valueOf(value[7]),
+                    Integer.valueOf(value[8]),
+                    Integer.valueOf(value[9]),
+                    Integer.valueOf(value[10]),
+                    Integer.valueOf(value[11]),
+                    Integer.valueOf(value[12])
+            );
+            
+            this.abilities.add(ability);
+            this.jComboAbilities.addItem(ability);
+            this.jComboAbilities.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
     private void cleanValues() {
         this.jLabelConnectToServed.setText("");
         
@@ -357,6 +470,13 @@ public class Client extends javax.swing.JFrame {
         this.jLabelStorageSize.setText("");
         
         this.jComboBoxSkills.removeAllItems();
+        
+        this.jLabelActionType.setText("");
+        this.jLabelActionAction.setText("");
+        this.jLabelActionStartDate.setText("");
+        this.jLabelActionEndDate.setText("");
+        
+        this.jComboAbilities.removeAllItems();
     }
     
     private String[] defaultParseLine(String line) {
@@ -413,12 +533,18 @@ public class Client extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonActionDetails;
     private javax.swing.JButton jButtonConnectToServer;
     private javax.swing.JButton jButtonDisconnectFromServer;
     private javax.swing.JButton jButtonSkillsDetails;
     private javax.swing.JButton jButtonStorageDetails;
+    private javax.swing.JComboBox<Ability> jComboAbilities;
     private javax.swing.JComboBox<Skill> jComboBoxSkills;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -426,6 +552,11 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelActionAction;
+    private javax.swing.JLabel jLabelActionEndDate;
+    private javax.swing.JLabel jLabelActionStartDate;
+    private javax.swing.JLabel jLabelActionType;
     private javax.swing.JLabel jLabelConnectToServed;
     private javax.swing.JLabel jLabelCurrentLevel;
     private javax.swing.JLabel jLabelExperience;
@@ -489,6 +620,95 @@ public class Client extends javax.swing.JFrame {
 
         public float getCurrentBonus() {
             return currentBonus;
+        }
+
+        public int getCostNextLevel() {
+            return costNextLevel;
+        }
+
+        public int getNextLevelStudyTime() {
+            return nextLevelStudyTime;
+        }
+
+        @Override
+        public String toString() {
+            return nameEng;
+        }
+    }
+    
+    private static class Ability {
+        private long id;
+        private String nameRus;
+        private String nameEng;
+        private String type;
+        private int currentLevel;
+        private int maxLevel;
+        private int damage;
+        private int damagePerSecond;
+        private int intervalDamage;
+        private int duration;
+        private int cooldown;
+        private int costNextLevel;
+        private int nextLevelStudyTime;
+
+        public Ability(long id, String nameRus, String nameEng, String type, int currentLevel, int maxLevel, int damage, int damagePerSecond, int intervalDamage, int duration, int cooldown, int costNextLevel, int nextLevelStudyTime) {
+            this.id = id;
+            this.nameRus = nameRus;
+            this.nameEng = nameEng;
+            this.type = type;
+            this.currentLevel = currentLevel;
+            this.maxLevel = maxLevel;
+            this.damage = damage;
+            this.damagePerSecond = damagePerSecond;
+            this.intervalDamage = intervalDamage;
+            this.duration = duration;
+            this.cooldown = cooldown;
+            this.costNextLevel = costNextLevel;
+            this.nextLevelStudyTime = nextLevelStudyTime;
+        }
+
+        public long getId() {
+            return id;
+        }
+
+        public String getNameRus() {
+            return nameRus;
+        }
+
+        public String getNameEng() {
+            return nameEng;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public int getCurrentLevel() {
+            return currentLevel;
+        }
+
+        public int getMaxLevel() {
+            return maxLevel;
+        }
+
+        public int getDamage() {
+            return damage;
+        }
+
+        public int getDamagePerSecond() {
+            return damagePerSecond;
+        }
+
+        public int getIntervalDamage() {
+            return intervalDamage;
+        }
+
+        public int getDuration() {
+            return duration;
+        }
+
+        public int getCooldown() {
+            return cooldown;
         }
 
         public int getCostNextLevel() {
