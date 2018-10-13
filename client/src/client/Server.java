@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Server {
     private Socket clientSocket;
@@ -23,9 +25,14 @@ public class Server {
         }
     }
 
-    public String sendMessage(String msg) throws IOException {
-        this.out.println(msg);
-        return in.readLine();
+    public String sendMessage(String msg) {
+        try {
+            this.out.println(msg);
+            return in.readLine();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
     
     public boolean stopConnection() {

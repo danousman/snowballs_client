@@ -5,6 +5,13 @@
  */
 package client;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  *
  * @author danda
@@ -12,6 +19,8 @@ package client;
 public class Client extends javax.swing.JFrame {
     
     private Server server;
+    private String login;
+    private List<Skill> skills;
 
     /**
      * Creates new form Client
@@ -32,9 +41,36 @@ public class Client extends javax.swing.JFrame {
         jButtonConnectToServer = new javax.swing.JButton();
         jLabelConnectToServed = new javax.swing.JLabel();
         jButtonDisconnectFromServer = new javax.swing.JButton();
+        jTextFieldLogin = new javax.swing.JTextField();
+        jTabbedPaneMain = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jButtonStorageDetails = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelSnowballs = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabelSnowflakes = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelIcicles = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabelStorageType = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabelStorageSize = new javax.swing.JLabel();
+        jButtonSkillsDetails = new javax.swing.JButton();
+        jComboBoxSkills = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabelCurrentLevel = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabelExperience = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabelNextExperience = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Snowballs client");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButtonConnectToServer.setText("Connect to server");
         jButtonConnectToServer.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -48,6 +84,8 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
+        jLabelConnectToServed.setText("Connected");
+
         jButtonDisconnectFromServer.setText("Disconnect from server");
         jButtonDisconnectFromServer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -60,30 +98,171 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
+        jButtonStorageDetails.setText("Get storage details");
+        jButtonStorageDetails.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonStorageDetailsMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setText("Snowballs:");
+
+        jLabelSnowballs.setText("10000");
+
+        jLabel2.setText("Snowflakes:");
+
+        jLabelSnowflakes.setText("10000");
+
+        jLabel3.setText("Icicles:");
+
+        jLabelIcicles.setText("10000");
+
+        jLabel4.setText("Storage type:");
+
+        jLabelStorageType.setText("EXTENDED");
+
+        jLabel5.setText("Storage size:");
+
+        jLabelStorageSize.setText("10000");
+
+        jButtonSkillsDetails.setText("Get skills details");
+        jButtonSkillsDetails.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSkillsDetailsMouseClicked(evt);
+            }
+        });
+        jButtonSkillsDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSkillsDetailsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonSkillsDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonStorageDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelSnowballs)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelSnowflakes)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelIcicles)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStorageType)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStorageSize))
+                    .addComponent(jComboBoxSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(163, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonStorageDetails)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabelSnowballs)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabelSnowflakes)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabelIcicles)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabelStorageType)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabelStorageSize))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSkillsDetails)
+                    .addComponent(jComboBoxSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(515, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneMain.addTab("Receive information", jPanel1);
+
+        jLabel6.setText("Current level:");
+
+        jLabelCurrentLevel.setText("15");
+
+        jLabel7.setText("Experience:");
+
+        jLabelExperience.setText("10000");
+
+        jLabel8.setText("Next experience:");
+
+        jLabelNextExperience.setText("10000");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonDisconnectFromServer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonConnectToServer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelConnectToServed)
-                .addContainerGap(847, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPaneMain)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelConnectToServed)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonConnectToServer)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonDisconnectFromServer)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelCurrentLevel)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelExperience)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelNextExperience)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonConnectToServer)
-                    .addComponent(jLabelConnectToServed))
+                .addComponent(jLabelConnectToServed)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonDisconnectFromServer)
-                .addContainerGap(444, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConnectToServer)
+                    .addComponent(jButtonDisconnectFromServer)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabelCurrentLevel)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabelExperience)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabelNextExperience))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPaneMain)
+                .addContainerGap())
         );
+
+        jTabbedPaneMain.getAccessibleContext().setAccessibleName("Receive information");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -95,6 +274,15 @@ public class Client extends javax.swing.JFrame {
     private void jButtonConnectToServerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConnectToServerMouseClicked
         this.server = new Server();
         if (this.server.startConnection("localhost", 2600)) {
+            cleanValues();
+            this.login = this.jTextFieldLogin.getText();
+            String result = this.server.sendMessage("00001 " + this.login);
+            String[] values = defaultParseLine(result);
+            
+            this.jLabelCurrentLevel.setText(values[0]);
+            this.jLabelExperience.setText(values[1]);
+            this.jLabelNextExperience.setText(values[2]);
+            
             this.jLabelConnectToServed.setText("Connected");
         } else {
             this.jLabelConnectToServed.setText("Connection failed");
@@ -113,6 +301,82 @@ public class Client extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonDisconnectFromServerMouseClicked
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cleanValues();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButtonStorageDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStorageDetailsMouseClicked
+        String result = this.server.sendMessage("10001 GET");
+        String[] values = defaultParseLine(result);
+        this.jLabelSnowballs.setText(values[0]);
+        this.jLabelSnowflakes.setText(values[1]);
+        this.jLabelIcicles.setText(values[2]);
+        this.jLabelStorageType.setText(values[3]);
+        this.jLabelStorageSize.setText(values[4]);
+    }//GEN-LAST:event_jButtonStorageDetailsMouseClicked
+
+    private void jButtonSkillsDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSkillsDetailsMouseClicked
+        this.skills = new ArrayList<>();
+        String result = this.server.sendMessage("10002 GET");
+        Map<Integer, String[]> values = specialParseLine(result);
+        for (Map.Entry<Integer, String[]> entry : values.entrySet()) {
+            String[] value = entry.getValue();
+            Skill skill = new Skill(
+                    Long.valueOf(value[0]), 
+                    value[1],
+                    value[2],
+                    value[3],
+                    Integer.valueOf(value[4]),
+                    Integer.valueOf(value[5]),
+                    Float.valueOf(value[6].replace(",", ".")),
+                    Integer.valueOf(value[7]),
+                    Integer.valueOf(value[8])
+            );
+            
+            this.skills.add(skill);
+            this.jComboBoxSkills.addItem(skill);
+            this.jComboBoxSkills.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jButtonSkillsDetailsMouseClicked
+
+    private void jButtonSkillsDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkillsDetailsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSkillsDetailsActionPerformed
+
+    private void cleanValues() {
+        this.jLabelConnectToServed.setText("");
+        
+        this.jLabelCurrentLevel.setText("");
+        this.jLabelExperience.setText("");
+        this.jLabelNextExperience.setText("");
+        
+        this.jLabelSnowballs.setText("");
+        this.jLabelSnowflakes.setText("");
+        this.jLabelIcicles.setText("");
+        this.jLabelStorageType.setText("");
+        this.jLabelStorageSize.setText("");
+        
+        this.jComboBoxSkills.removeAllItems();
+    }
+    
+    private String[] defaultParseLine(String line) {
+        return line.substring(6).split(" ");
+    }
+    
+    private Map<Integer, String[]> specialParseLine(String line) {
+        String[] parts = Stream.of(line.substring(6).split("\\]"))
+                .map(it ->it.replace(" [", ""))
+                .map(it -> it.replace("[", ""))
+                .collect(Collectors.toList())
+                .toArray(new String[0]);
+        Map<Integer, String[]> result = new HashMap<>();
+        for (int i = 0; i < parts.length; i++) {
+            result.put(i, parts[i].split(";"));
+        }
+        
+        return result;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -151,6 +415,93 @@ public class Client extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConnectToServer;
     private javax.swing.JButton jButtonDisconnectFromServer;
+    private javax.swing.JButton jButtonSkillsDetails;
+    private javax.swing.JButton jButtonStorageDetails;
+    private javax.swing.JComboBox<Skill> jComboBoxSkills;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelConnectToServed;
+    private javax.swing.JLabel jLabelCurrentLevel;
+    private javax.swing.JLabel jLabelExperience;
+    private javax.swing.JLabel jLabelIcicles;
+    private javax.swing.JLabel jLabelNextExperience;
+    private javax.swing.JLabel jLabelSnowballs;
+    private javax.swing.JLabel jLabelSnowflakes;
+    private javax.swing.JLabel jLabelStorageSize;
+    private javax.swing.JLabel jLabelStorageType;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTabbedPane jTabbedPaneMain;
+    private javax.swing.JTextField jTextFieldLogin;
     // End of variables declaration//GEN-END:variables
+
+    private static class Skill {
+        private long id;
+        private String nameRus;
+        private String nameEng;
+        private String type;
+        private int currentLevel;
+        private int maxLevel;
+        private float currentBonus;
+        private int costNextLevel;
+        private int nextLevelStudyTime;
+
+        public Skill(long id, String nameRus, String nameEng, String type, int currentLevel, int maxLevel, float currentBonus, int costNextLevel, int nextLevelStudyTime) {
+            this.id = id;
+            this.nameRus = nameRus;
+            this.nameEng = nameEng;
+            this.type = type;
+            this.currentLevel = currentLevel;
+            this.maxLevel = maxLevel;
+            this.currentBonus = currentBonus;
+            this.costNextLevel = costNextLevel;
+            this.nextLevelStudyTime = nextLevelStudyTime;
+        }
+
+        public long getId() {
+            return id;
+        }
+
+        public String getNameRus() {
+            return nameRus;
+        }
+
+        public String getNameEng() {
+            return nameEng;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public int getCurrentLevel() {
+            return currentLevel;
+        }
+
+        public int getMaxLevel() {
+            return maxLevel;
+        }
+
+        public float getCurrentBonus() {
+            return currentBonus;
+        }
+
+        public int getCostNextLevel() {
+            return costNextLevel;
+        }
+
+        public int getNextLevelStudyTime() {
+            return nextLevelStudyTime;
+        }
+
+        @Override
+        public String toString() {
+            return nameEng;
+        }
+    }
 }
