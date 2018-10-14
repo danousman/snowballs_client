@@ -22,7 +22,7 @@ public class Client extends javax.swing.JFrame {
     private String login;
     private List<Skill> skills;
     private List<Ability> abilities;
-    private List<Item> items;
+    private Map<Long, Item> items;
 
     /**
      * Creates new form Client
@@ -77,6 +77,17 @@ public class Client extends javax.swing.JFrame {
         jLabelFinishedActionAction = new javax.swing.JLabel();
         jButtonItemsDetails = new javax.swing.JButton();
         jComboBoxItemsDetails = new javax.swing.JComboBox<>();
+        jButtonStorageItems = new javax.swing.JButton();
+        jComboBoxStorageItems = new javax.swing.JComboBox<>();
+        jButtonPlayerClothes = new javax.swing.JButton();
+        jComboBoxPlayerClothes = new javax.swing.JComboBox<>();
+        jButtonPlayerCharacteristics = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jLabelPlayerHeat = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabelPlayerDodge = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabelPlayerStrength = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelCurrentLevel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -214,6 +225,39 @@ public class Client extends javax.swing.JFrame {
             }
         });
 
+        jButtonStorageItems.setText("Get storage items");
+        jButtonStorageItems.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonStorageItemsMouseClicked(evt);
+            }
+        });
+
+        jButtonPlayerClothes.setText("Get player clothes");
+        jButtonPlayerClothes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonPlayerClothesMouseClicked(evt);
+            }
+        });
+
+        jButtonPlayerCharacteristics.setText("Get player characteristics");
+        jButtonPlayerCharacteristics.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonPlayerCharacteristicsMouseClicked(evt);
+            }
+        });
+
+        jLabel15.setText("Heat:");
+
+        jLabelPlayerHeat.setText("10000");
+
+        jLabel16.setText("Dodge:");
+
+        jLabelPlayerDodge.setText("10000");
+
+        jLabel17.setText("Strength:");
+
+        jLabelPlayerStrength.setText("10000");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -221,12 +265,15 @@ public class Client extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonPlayerCharacteristics, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonStorageItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonItemsDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonFinishedAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonActionDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonSkillsDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonStorageDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonStorageDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonPlayerClothes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -275,8 +322,22 @@ public class Client extends javax.swing.JFrame {
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelFinishedActionAction))
-                    .addComponent(jComboBoxItemsDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(111, Short.MAX_VALUE))
+                    .addComponent(jComboBoxItemsDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxStorageItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxPlayerClothes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPlayerHeat)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPlayerDodge)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPlayerStrength)))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +385,24 @@ public class Client extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonItemsDetails)
                     .addComponent(jComboBoxItemsDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(399, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonStorageItems)
+                    .addComponent(jComboBoxStorageItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonPlayerClothes)
+                    .addComponent(jComboBoxPlayerClothes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonPlayerCharacteristics)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabelPlayerHeat)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabelPlayerDodge)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabelPlayerStrength))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
 
         jTabbedPaneMain.addTab("Receive information", jPanel1);
@@ -467,8 +545,8 @@ public class Client extends javax.swing.JFrame {
 
             this.skills.add(skill);
             this.jComboBoxSkills.addItem(skill);
-            this.jComboBoxSkills.setSelectedIndex(0);
         }
+        this.jComboBoxSkills.setSelectedIndex(0);
     }//GEN-LAST:event_jButtonSkillsDetailsMouseClicked
 
     private void jButtonSkillsDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkillsDetailsActionPerformed
@@ -507,8 +585,8 @@ public class Client extends javax.swing.JFrame {
 
             this.abilities.add(ability);
             this.jComboAbilities.addItem(ability);
-            this.jComboAbilities.setSelectedIndex(0);
         }
+        this.jComboAbilities.setSelectedIndex(0);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButtonFinishedActionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFinishedActionMouseClicked
@@ -519,13 +597,7 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFinishedActionMouseClicked
 
     private void jButtonItemsDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonItemsDetailsMouseClicked
-        this.abilities = new ArrayList<>();
-        String result = this.server.sendMessage("10004 GET");
-        List<String[]> values = specialParseLine(result);
-    }//GEN-LAST:event_jButtonItemsDetailsMouseClicked
-
-    private void jButtonItemsDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItemsDetailsActionPerformed
-        this.items = new ArrayList<>();
+        this.items = new HashMap<>();
         String result = this.server.sendMessage("10006 GET");
         List<String[]> values = specialParseLine(result);
         for (String[] value : values) {
@@ -538,12 +610,42 @@ public class Client extends javax.swing.JFrame {
                     Integer.valueOf(value[5]),
                     Float.valueOf(value[6].replace(",", "."))
             );
-            
-            this.items.add(item);
+
+            this.items.put(item.getId(), item);
             this.jComboBoxItemsDetails.addItem(item);
-            this.jComboBoxItemsDetails.setSelectedItem(0);
         }
+        this.jComboBoxItemsDetails.setSelectedItem(0);
+    }//GEN-LAST:event_jButtonItemsDetailsMouseClicked
+
+    private void jButtonItemsDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItemsDetailsActionPerformed
+        
     }//GEN-LAST:event_jButtonItemsDetailsActionPerformed
+
+    private void jButtonStorageItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStorageItemsMouseClicked
+        String result = this.server.sendMessage("10007 GET");
+        String[] values = defaultParseLine(result);
+        Stream.of(values).forEach(it -> {
+            this.jComboBoxStorageItems.addItem(this.items.get(Long.valueOf(it)));
+        });
+        this.jComboBoxStorageItems.setSelectedIndex(0);
+    }//GEN-LAST:event_jButtonStorageItemsMouseClicked
+
+    private void jButtonPlayerClothesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlayerClothesMouseClicked
+        String result = this.server.sendMessage("10008 GET");
+        String[] values = defaultParseLine(result);
+        Stream.of(values).forEach(it -> {
+            this.jComboBoxPlayerClothes.addItem(this.items.get(Long.valueOf(it)));
+            this.jComboBoxPlayerClothes.setSelectedIndex(0);
+        });
+    }//GEN-LAST:event_jButtonPlayerClothesMouseClicked
+
+    private void jButtonPlayerCharacteristicsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlayerCharacteristicsMouseClicked
+        String result = this.server.sendMessage("10009 GET");
+        String[] values = defaultParseLine(result);
+        this.jLabelPlayerHeat.setText(values[0]);
+        this.jLabelPlayerDodge.setText(values[1]);
+        this.jLabelPlayerStrength.setText(values[2]);
+    }//GEN-LAST:event_jButtonPlayerCharacteristicsMouseClicked
 
     private void cleanValues() {
         this.jLabelConnectToServed.setText("");
@@ -569,10 +671,17 @@ public class Client extends javax.swing.JFrame {
 
         this.jLabelFinishedActionType.setText("");
         this.jLabelFinishedActionAction.setText("");
+        
+        this.jLabelPlayerHeat.setText("");
+        this.jLabelPlayerDodge.setText("");
+        this.jLabelPlayerStrength.setText("");
     }
 
     private String[] defaultParseLine(String line) {
-        return line.substring(6).split(" ");
+        return Stream.of(line.substring(6).split(" "))
+                .filter(it -> !"".equals(it))
+                .collect(Collectors.toList())
+                .toArray(new String[0]);
     }
 
     private List<String[]> specialParseLine(String line) {
@@ -631,17 +740,25 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDisconnectFromServer;
     private javax.swing.JButton jButtonFinishedAction;
     private javax.swing.JButton jButtonItemsDetails;
+    private javax.swing.JButton jButtonPlayerCharacteristics;
+    private javax.swing.JButton jButtonPlayerClothes;
     private javax.swing.JButton jButtonSkillsDetails;
     private javax.swing.JButton jButtonStorageDetails;
+    private javax.swing.JButton jButtonStorageItems;
     private javax.swing.JComboBox<Ability> jComboAbilities;
     private javax.swing.JComboBox<Item> jComboBoxItemsDetails;
+    private javax.swing.JComboBox<Item> jComboBoxPlayerClothes;
     private javax.swing.JComboBox<Skill> jComboBoxSkills;
+    private javax.swing.JComboBox<Item> jComboBoxStorageItems;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -661,6 +778,9 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFinishedActionType;
     private javax.swing.JLabel jLabelIcicles;
     private javax.swing.JLabel jLabelNextExperience;
+    private javax.swing.JLabel jLabelPlayerDodge;
+    private javax.swing.JLabel jLabelPlayerHeat;
+    private javax.swing.JLabel jLabelPlayerStrength;
     private javax.swing.JLabel jLabelSnowballs;
     private javax.swing.JLabel jLabelSnowflakes;
     private javax.swing.JLabel jLabelStorageSize;
