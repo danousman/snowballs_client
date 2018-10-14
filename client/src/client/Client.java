@@ -18,6 +18,9 @@ import java.util.stream.Stream;
  */
 public class Client extends javax.swing.JFrame {
 
+    private static final String OK_STATUS = "OK";
+    private static final String FAIL_STATUS = "FAIL";
+
     private Server server;
     private String login;
     private List<Skill> skills;
@@ -88,6 +91,15 @@ public class Client extends javax.swing.JFrame {
         jLabelPlayerDodge = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabelPlayerStrength = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButtonStudySkill = new javax.swing.JButton();
+        jComboBoxStudySkills = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        jLabelStudySkillStatus = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabelStudySkillStartDate = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabelStudySkillEndDate = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelCurrentLevel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -407,6 +419,67 @@ public class Client extends javax.swing.JFrame {
 
         jTabbedPaneMain.addTab("Receive information", jPanel1);
 
+        jButtonStudySkill.setText("Study skill");
+        jButtonStudySkill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonStudySkillMouseClicked(evt);
+            }
+        });
+
+        jLabel18.setText("Status:");
+
+        jLabelStudySkillStatus.setText("FAIL");
+
+        jLabel19.setText("Start date:");
+
+        jLabelStudySkillStartDate.setText("2018-10-13T23:44:20.877");
+
+        jLabel20.setText("End date:");
+
+        jLabelStudySkillEndDate.setText("2018-10-13T23:44:20.877");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonStudySkill, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxStudySkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelStudySkillStatus)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelStudySkillStartDate)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelStudySkillEndDate)
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonStudySkill)
+                    .addComponent(jComboBoxStudySkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabelStudySkillStatus)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabelStudySkillStartDate)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabelStudySkillEndDate))
+                .addContainerGap(544, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneMain.addTab("Processes", jPanel2);
+        jPanel2.getAccessibleContext().setAccessibleName("");
+
         jLabel6.setText("Current level:");
 
         jLabelCurrentLevel.setText("15");
@@ -472,8 +545,6 @@ public class Client extends javax.swing.JFrame {
                 .addComponent(jTabbedPaneMain)
                 .addContainerGap())
         );
-
-        jTabbedPaneMain.getAccessibleContext().setAccessibleName("Receive information");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -545,8 +616,11 @@ public class Client extends javax.swing.JFrame {
 
             this.skills.add(skill);
             this.jComboBoxSkills.addItem(skill);
+            this.jComboBoxStudySkills.addItem(skill);
         }
+
         this.jComboBoxSkills.setSelectedIndex(0);
+        this.jComboBoxStudySkills.setSelectedIndex(0);
     }//GEN-LAST:event_jButtonSkillsDetailsMouseClicked
 
     private void jButtonSkillsDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkillsDetailsActionPerformed
@@ -618,7 +692,7 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonItemsDetailsMouseClicked
 
     private void jButtonItemsDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItemsDetailsActionPerformed
-        
+
     }//GEN-LAST:event_jButtonItemsDetailsActionPerformed
 
     private void jButtonStorageItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStorageItemsMouseClicked
@@ -647,6 +721,18 @@ public class Client extends javax.swing.JFrame {
         this.jLabelPlayerStrength.setText(values[2]);
     }//GEN-LAST:event_jButtonPlayerCharacteristicsMouseClicked
 
+    private void jButtonStudySkillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStudySkillMouseClicked
+        String type = ((Skill) this.jComboBoxStudySkills.getSelectedItem()).getType();
+        String result = this.server.sendMessage("00002 " + type);
+        String[] values = defaultParseLine(result);
+        this.jLabelStudySkillStatus.setText(values[0]);
+        
+        if (OK_STATUS.equals(values[0])) {
+            this.jLabelStudySkillStartDate.setText(values[1]);
+            this.jLabelStudySkillEndDate.setText(values[2]);
+        }
+    }//GEN-LAST:event_jButtonStudySkillMouseClicked
+
     private void cleanValues() {
         this.jLabelConnectToServed.setText("");
 
@@ -669,12 +755,24 @@ public class Client extends javax.swing.JFrame {
 
         this.jComboAbilities.removeAllItems();
 
+        this.jComboBoxItemsDetails.removeAllItems();
+
+        this.jComboBoxStorageItems.removeAllItems();
+
+        this.jComboBoxPlayerClothes.removeAllItems();
+
         this.jLabelFinishedActionType.setText("");
         this.jLabelFinishedActionAction.setText("");
-        
+
         this.jLabelPlayerHeat.setText("");
         this.jLabelPlayerDodge.setText("");
         this.jLabelPlayerStrength.setText("");
+
+        //--------------------------------------------------
+        this.jComboBoxStudySkills.removeAllItems();
+        this.jLabelStudySkillStatus.setText("");
+        this.jLabelStudySkillStartDate.setText("");
+        this.jLabelStudySkillEndDate.setText("");
     }
 
     private String[] defaultParseLine(String line) {
@@ -745,11 +843,13 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSkillsDetails;
     private javax.swing.JButton jButtonStorageDetails;
     private javax.swing.JButton jButtonStorageItems;
+    private javax.swing.JButton jButtonStudySkill;
     private javax.swing.JComboBox<Ability> jComboAbilities;
     private javax.swing.JComboBox<Item> jComboBoxItemsDetails;
     private javax.swing.JComboBox<Item> jComboBoxPlayerClothes;
     private javax.swing.JComboBox<Skill> jComboBoxSkills;
     private javax.swing.JComboBox<Item> jComboBoxStorageItems;
+    private javax.swing.JComboBox<Skill> jComboBoxStudySkills;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -759,7 +859,10 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -785,7 +888,11 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSnowflakes;
     private javax.swing.JLabel jLabelStorageSize;
     private javax.swing.JLabel jLabelStorageType;
+    private javax.swing.JLabel jLabelStudySkillEndDate;
+    private javax.swing.JLabel jLabelStudySkillStartDate;
+    private javax.swing.JLabel jLabelStudySkillStatus;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPaneMain;
     private javax.swing.JTextField jTextFieldLogin;
     // End of variables declaration//GEN-END:variables
