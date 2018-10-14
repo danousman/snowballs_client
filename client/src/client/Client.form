@@ -135,6 +135,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jButtonItemsDetails" max="32767" attributes="0"/>
                           <Component id="jButtonFinishedAction" max="32767" attributes="0"/>
                           <Component id="jButton1" max="32767" attributes="0"/>
                           <Component id="jButtonActionDetails" max="32767" attributes="0"/>
@@ -192,8 +193,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabelFinishedActionAction" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jComboBoxItemsDetails" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="163" max="32767" attributes="0"/>
+                      <EmptySpace pref="111" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -244,7 +246,12 @@
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelFinishedActionAction" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="428" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonItemsDetails" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBoxItemsDetails" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="399" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -372,7 +379,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelActionEndDate">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel13"/>
+                <Property name="text" type="java.lang.String" value="2018-10-13T23:44:20.877"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton1">
@@ -420,6 +427,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="FREE"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonItemsDetails">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Get items details"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonItemsDetailsMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonItemsDetailsActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBoxItemsDetails">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Item&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
