@@ -119,6 +119,10 @@ public class Client extends javax.swing.JFrame {
         jComboBoxPutOnClothes = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
         jLabelPutOnClothesStatus = new javax.swing.JLabel();
+        jButtonTakeOffClothes = new javax.swing.JButton();
+        jComboBoxTakeOffClothes = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
+        jLabelTakeOffClothes = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabelCurrentLevel = new javax.swing.JLabel();
@@ -491,6 +495,17 @@ public class Client extends javax.swing.JFrame {
 
         jLabelPutOnClothesStatus.setText("FAIL");
 
+        jButtonTakeOffClothes.setText("Take off clothes");
+        jButtonTakeOffClothes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonTakeOffClothesMouseClicked(evt);
+            }
+        });
+
+        jLabel27.setText("Status:");
+
+        jLabelTakeOffClothes.setText("FAIL");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -498,6 +513,7 @@ public class Client extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonTakeOffClothes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonPutOnClothes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonCancelStudyAbility, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonStudyAbility, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -550,7 +566,13 @@ public class Client extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel26)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelPutOnClothesStatus)))
+                        .addComponent(jLabelPutOnClothesStatus))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBoxTakeOffClothes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTakeOffClothes)))
                 .addContainerGap(157, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -592,10 +614,17 @@ public class Client extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonPutOnClothes)
                     .addComponent(jComboBoxPutOnClothes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabelPutOnClothesStatus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel26)
-                        .addComponent(jLabelPutOnClothesStatus)))
-                .addContainerGap(428, Short.MAX_VALUE))
+                        .addComponent(jButtonTakeOffClothes)
+                        .addComponent(jComboBoxTakeOffClothes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel27)
+                        .addComponent(jLabelTakeOffClothes)))
+                .addContainerGap(399, Short.MAX_VALUE))
         );
 
         jTabbedPaneMain.addTab("Processes", jPanel2);
@@ -730,7 +759,7 @@ public class Client extends javax.swing.JFrame {
         this.jComboBoxSkills.removeAllItems();
         this.jComboBoxStudySkills.removeAllItems();
         this.jComboBoxCancelStudySkill.removeAllItems();
-        
+
         String result = this.server.sendMessage("10002 GET");
         List<String[]> values = specialParseLine(result);
         for (String[] value : values) {
@@ -750,11 +779,11 @@ public class Client extends javax.swing.JFrame {
             this.jComboBoxSkills.addItem(skill);
             this.jComboBoxStudySkills.addItem(skill);
             this.jComboBoxCancelStudySkill.addItem(skill);
-        }
 
-        this.jComboBoxSkills.setSelectedIndex(0);
-        this.jComboBoxStudySkills.setSelectedIndex(0);
-        this.jComboBoxCancelStudySkill.setSelectedIndex(0);
+            this.jComboBoxSkills.setSelectedIndex(0);
+            this.jComboBoxStudySkills.setSelectedIndex(0);
+            this.jComboBoxCancelStudySkill.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_jButtonSkillsDetailsMouseClicked
 
     private void jButtonActionDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActionDetailsMouseClicked
@@ -771,7 +800,7 @@ public class Client extends javax.swing.JFrame {
         this.jComboAbilities.removeAllItems();
         this.jComboBoxStudyAbility.removeAllItems();
         this.jComboBoxCancelStudyAbility.removeAllItems();
-        
+
         String result = this.server.sendMessage("10004 GET");
         List<String[]> values = specialParseLine(result);
         for (String[] value : values) {
@@ -795,11 +824,11 @@ public class Client extends javax.swing.JFrame {
             this.jComboAbilities.addItem(ability);
             this.jComboBoxStudyAbility.addItem(ability);
             this.jComboBoxCancelStudyAbility.addItem(ability);
+
+            this.jComboAbilities.setSelectedIndex(0);
+            this.jComboBoxStudyAbility.setSelectedIndex(0);
+            this.jComboBoxCancelStudyAbility.setSelectedIndex(0);
         }
-        
-        this.jComboAbilities.setSelectedIndex(0);
-        this.jComboBoxStudyAbility.setSelectedIndex(0);
-        this.jComboBoxCancelStudyAbility.setSelectedIndex(0);
     }//GEN-LAST:event_jButtonAbilitiesDetailsMouseClicked
 
     private void jButtonFinishedActionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFinishedActionMouseClicked
@@ -812,7 +841,7 @@ public class Client extends javax.swing.JFrame {
     private void jButtonItemsDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonItemsDetailsMouseClicked
         this.items = new HashMap<>();
         this.jComboBoxItemsDetails.removeAllItems();
-        
+
         String result = this.server.sendMessage("10006 GET");
         List<String[]> values = specialParseLine(result);
         for (String[] value : values) {
@@ -828,33 +857,38 @@ public class Client extends javax.swing.JFrame {
 
             this.items.put(item.getId(), item);
             this.jComboBoxItemsDetails.addItem(item);
+
+            this.jComboBoxItemsDetails.setSelectedItem(0);
         }
-        this.jComboBoxItemsDetails.setSelectedItem(0);
     }//GEN-LAST:event_jButtonItemsDetailsMouseClicked
 
     private void jButtonStorageItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStorageItemsMouseClicked
         this.jComboBoxStorageItems.removeAllItems();
         this.jComboBoxPutOnClothes.removeAllItems();
-        
+
         String result = this.server.sendMessage("10007 GET");
         String[] values = defaultParseLine(result);
         Stream.of(values).forEach(it -> {
             this.jComboBoxStorageItems.addItem(this.items.get(Long.valueOf(it)));
             this.jComboBoxPutOnClothes.addItem(this.items.get(Long.valueOf(it)));
+
+            this.jComboBoxStorageItems.setSelectedIndex(0);
+            this.jComboBoxPutOnClothes.setSelectedIndex(0);
         });
-        
-        this.jComboBoxStorageItems.setSelectedIndex(0);
-        this.jComboBoxPutOnClothes.setSelectedIndex(0);
     }//GEN-LAST:event_jButtonStorageItemsMouseClicked
 
     private void jButtonPlayerClothesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlayerClothesMouseClicked
         this.jComboBoxPlayerClothes.removeAllItems();
-        
+        this.jComboBoxTakeOffClothes.removeAllItems();
+
         String result = this.server.sendMessage("10008 GET");
         String[] values = defaultParseLine(result);
         Stream.of(values).forEach(it -> {
             this.jComboBoxPlayerClothes.addItem(this.items.get(Long.valueOf(it)));
+            this.jComboBoxTakeOffClothes.addItem(this.items.get(Long.valueOf(it)));
+
             this.jComboBoxPlayerClothes.setSelectedIndex(0);
+            this.jComboBoxTakeOffClothes.setSelectedIndex(0);
         });
     }//GEN-LAST:event_jButtonPlayerClothesMouseClicked
 
@@ -910,12 +944,29 @@ public class Client extends javax.swing.JFrame {
         String result = this.server.sendMessage("00006 " + id);
         String[] values = defaultParseLine(result);
         this.jLabelPutOnClothesStatus.setText(values[0]);
-        
+
         if (OK_STATUS.equals(values[0])) {
             this.jComboBoxPutOnClothes.removeItem(item);
             this.jComboBoxStorageItems.removeItem(item);
+            this.jComboBoxPlayerClothes.addItem(item);
+            this.jComboBoxTakeOffClothes.addItem(item);
         }
     }//GEN-LAST:event_jButtonPutOnClothesMouseClicked
+
+    private void jButtonTakeOffClothesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTakeOffClothesMouseClicked
+        Item item = (Item) this.jComboBoxTakeOffClothes.getSelectedItem();
+        long id = item.getId();
+        String result = this.server.sendMessage("00007 " + id);
+        String[] values = defaultParseLine(result);
+        this.jLabelTakeOffClothes.setText(values[0]);
+
+        if (OK_STATUS.equals(values[0])) {
+            this.jComboBoxTakeOffClothes.removeItem(item);
+            this.jComboBoxPlayerClothes.removeItem(item);
+            this.jComboBoxStorageItems.addItem(item);
+            this.jComboBoxPutOnClothes.addItem(item);
+        }
+    }//GEN-LAST:event_jButtonTakeOffClothesMouseClicked
 
     private void cleanValues() {
         this.jLabelConnectToServed.setText("");
@@ -968,9 +1019,12 @@ public class Client extends javax.swing.JFrame {
 
         this.jComboBoxCancelStudyAbility.removeAllItems();
         this.jLabelCancelStudyAbilityStatus.setText("");
-        
+
         this.jComboBoxPutOnClothes.removeAllItems();
         this.jLabelPutOnClothesStatus.setText("");
+
+        this.jComboBoxTakeOffClothes.removeAllItems();
+        this.jLabelTakeOffClothes.setText("");
     }
 
     private String[] defaultParseLine(String line) {
@@ -1046,6 +1100,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JButton jButtonStorageItems;
     private javax.swing.JButton jButtonStudyAbility;
     private javax.swing.JButton jButtonStudySkill;
+    private javax.swing.JButton jButtonTakeOffClothes;
     private javax.swing.JComboBox<Ability> jComboAbilities;
     private javax.swing.JComboBox<Ability> jComboBoxCancelStudyAbility;
     private javax.swing.JComboBox<Skill> jComboBoxCancelStudySkill;
@@ -1057,6 +1112,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JComboBox<Item> jComboBoxStorageItems;
     private javax.swing.JComboBox<Ability> jComboBoxStudyAbility;
     private javax.swing.JComboBox<Skill> jComboBoxStudySkills;
+    private javax.swing.JComboBox<Item> jComboBoxTakeOffClothes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1076,6 +1132,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1110,6 +1167,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelStudySkillEndDate;
     private javax.swing.JLabel jLabelStudySkillStartDate;
     private javax.swing.JLabel jLabelStudySkillStatus;
+    private javax.swing.JLabel jLabelTakeOffClothes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
