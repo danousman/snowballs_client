@@ -119,6 +119,7 @@ public class Client extends javax.swing.JFrame {
         jComboBoxPutOnClothes = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
         jLabelPutOnClothesStatus = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabelCurrentLevel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -349,7 +350,7 @@ public class Client extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelPlayerStrength)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -550,7 +551,7 @@ public class Client extends javax.swing.JFrame {
                         .addComponent(jLabel26)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelPutOnClothesStatus)))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,6 +601,19 @@ public class Client extends javax.swing.JFrame {
         jTabbedPaneMain.addTab("Processes", jPanel2);
         jPanel2.getAccessibleContext().setAccessibleName("");
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 868, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 578, Short.MAX_VALUE)
+        );
+
+        jTabbedPaneMain.addTab("Battle", jPanel3);
+
         jLabel6.setText("Current level:");
 
         jLabelCurrentLevel.setText("15");
@@ -631,7 +645,7 @@ public class Client extends javax.swing.JFrame {
                                 .addComponent(jComboBoxLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonConnectToServer)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(112, 112, 112)
                                 .addComponent(jButtonDisconnectFromServer)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel6)
@@ -1098,6 +1112,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelStudySkillStatus;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPaneMain;
     // End of variables declaration//GEN-END:variables
 }
