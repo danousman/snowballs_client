@@ -46,7 +46,6 @@ public class Client extends javax.swing.JFrame {
         jButtonConnectToServer = new javax.swing.JButton();
         jLabelConnectToServed = new javax.swing.JLabel();
         jButtonDisconnectFromServer = new javax.swing.JButton();
-        jTextFieldLogin = new javax.swing.JTextField();
         jTabbedPaneMain = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jButtonStorageDetails = new javax.swing.JButton();
@@ -71,7 +70,7 @@ public class Client extends javax.swing.JFrame {
         jLabelActionStartDate = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabelActionEndDate = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonAbilitiesDetails = new javax.swing.JButton();
         jComboAbilities = new javax.swing.JComboBox<>();
         jButtonFinishedAction = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
@@ -100,12 +99,33 @@ public class Client extends javax.swing.JFrame {
         jLabelStudySkillStartDate = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabelStudySkillEndDate = new javax.swing.JLabel();
+        jButtonCancelStudySkill = new javax.swing.JButton();
+        jComboBoxCancelStudySkill = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        jLabelCancelStudySkillStatus = new javax.swing.JLabel();
+        jButtonStudyAbility = new javax.swing.JButton();
+        jComboBoxStudyAbility = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        jLabelStudyAbilityStatus = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabelStudyAbilityStartDate = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabelStudyAbilityEndDate = new javax.swing.JLabel();
+        jButtonCancelStudyAbility = new javax.swing.JButton();
+        jComboBoxCancelStudyAbility = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
+        jLabelCancelStudyAbilityStatus = new javax.swing.JLabel();
+        jButtonPutOnClothes = new javax.swing.JButton();
+        jComboBoxPutOnClothes = new javax.swing.JComboBox<>();
+        jLabel26 = new javax.swing.JLabel();
+        jLabelPutOnClothesStatus = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelCurrentLevel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabelExperience = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabelNextExperience = new javax.swing.JLabel();
+        jComboBoxLogin = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Snowballs client");
@@ -121,11 +141,6 @@ public class Client extends javax.swing.JFrame {
                 jButtonConnectToServerMouseClicked(evt);
             }
         });
-        jButtonConnectToServer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConnectToServerActionPerformed(evt);
-            }
-        });
 
         jLabelConnectToServed.setText("Connected");
 
@@ -133,11 +148,6 @@ public class Client extends javax.swing.JFrame {
         jButtonDisconnectFromServer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonDisconnectFromServerMouseClicked(evt);
-            }
-        });
-        jButtonDisconnectFromServer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDisconnectFromServerActionPerformed(evt);
             }
         });
 
@@ -174,11 +184,6 @@ public class Client extends javax.swing.JFrame {
                 jButtonSkillsDetailsMouseClicked(evt);
             }
         });
-        jButtonSkillsDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSkillsDetailsActionPerformed(evt);
-            }
-        });
 
         jButtonActionDetails.setText("Get action details");
         jButtonActionDetails.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,10 +208,10 @@ public class Client extends javax.swing.JFrame {
 
         jLabelActionEndDate.setText("2018-10-13T23:44:20.877");
 
-        jButton1.setText("Get abilities details");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonAbilitiesDetails.setText("Get abilities details");
+        jButtonAbilitiesDetails.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                jButtonAbilitiesDetailsMouseClicked(evt);
             }
         });
 
@@ -229,11 +234,6 @@ public class Client extends javax.swing.JFrame {
         jButtonItemsDetails.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonItemsDetailsMouseClicked(evt);
-            }
-        });
-        jButtonItemsDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonItemsDetailsActionPerformed(evt);
             }
         });
 
@@ -281,7 +281,7 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(jButtonStorageItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonItemsDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonFinishedAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAbilitiesDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonActionDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonSkillsDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonStorageDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -384,7 +384,7 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(jLabelActionEndDate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonAbilitiesDetails)
                     .addComponent(jComboAbilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -438,27 +438,118 @@ public class Client extends javax.swing.JFrame {
 
         jLabelStudySkillEndDate.setText("2018-10-13T23:44:20.877");
 
+        jButtonCancelStudySkill.setText("Cancel study skill");
+        jButtonCancelStudySkill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCancelStudySkillMouseClicked(evt);
+            }
+        });
+
+        jLabel21.setText("Status:");
+
+        jLabelCancelStudySkillStatus.setText("FAIL");
+
+        jButtonStudyAbility.setText("Study ability");
+        jButtonStudyAbility.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonStudyAbilityMouseClicked(evt);
+            }
+        });
+
+        jLabel22.setText("Status:");
+
+        jLabelStudyAbilityStatus.setText("FAIL");
+
+        jLabel23.setText("Start date:");
+
+        jLabelStudyAbilityStartDate.setText("2018-10-13T23:44:20.877");
+
+        jLabel24.setText("End date:");
+
+        jLabelStudyAbilityEndDate.setText("2018-10-13T23:44:20.877");
+
+        jButtonCancelStudyAbility.setText("Cancel study ability");
+        jButtonCancelStudyAbility.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCancelStudyAbilityMouseClicked(evt);
+            }
+        });
+
+        jLabel25.setText("Status:");
+
+        jLabelCancelStudyAbilityStatus.setText("FAIL");
+
+        jButtonPutOnClothes.setText("Put on clothes");
+        jButtonPutOnClothes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonPutOnClothesMouseClicked(evt);
+            }
+        });
+
+        jLabel26.setText("Status:");
+
+        jLabelPutOnClothesStatus.setText("FAIL");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonStudySkill, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonPutOnClothes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCancelStudyAbility, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonStudyAbility, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonCancelStudySkill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonStudySkill, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jComboBoxStudySkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelStudySkillStatus)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelStudySkillStartDate)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelStudySkillEndDate)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBoxStudySkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStudySkillStatus)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStudySkillStartDate)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStudySkillEndDate))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBoxCancelStudySkill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelCancelStudySkillStatus))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBoxStudyAbility, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStudyAbilityStatus)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStudyAbilityStartDate)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelStudyAbilityEndDate))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBoxCancelStudyAbility, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelCancelStudyAbilityStatus))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jComboBoxPutOnClothes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPutOnClothesStatus)))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -474,7 +565,36 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(jLabelStudySkillStartDate)
                     .addComponent(jLabel20)
                     .addComponent(jLabelStudySkillEndDate))
-                .addContainerGap(544, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancelStudySkill)
+                    .addComponent(jComboBoxCancelStudySkill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabelCancelStudySkillStatus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonStudyAbility)
+                    .addComponent(jComboBoxStudyAbility, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabelStudyAbilityStatus)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabelStudyAbilityStartDate)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabelStudyAbilityEndDate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancelStudyAbility)
+                    .addComponent(jComboBoxCancelStudyAbility, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabelCancelStudyAbilityStatus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonPutOnClothes)
+                    .addComponent(jComboBoxPutOnClothes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel26)
+                        .addComponent(jLabelPutOnClothesStatus)))
+                .addContainerGap(428, Short.MAX_VALUE))
         );
 
         jTabbedPaneMain.addTab("Processes", jPanel2);
@@ -492,6 +612,8 @@ public class Client extends javax.swing.JFrame {
 
         jLabelNextExperience.setText("10000");
 
+        jComboBoxLogin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "danousman", "danousman1", "danousman2", "danousman3" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -506,7 +628,7 @@ public class Client extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelConnectToServed)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonConnectToServer)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -532,7 +654,6 @@ public class Client extends javax.swing.JFrame {
                 .addComponent(jLabelConnectToServed)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonConnectToServer)
                     .addComponent(jButtonDisconnectFromServer)
                     .addComponent(jLabel6)
@@ -540,7 +661,8 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabelExperience)
                     .addComponent(jLabel8)
-                    .addComponent(jLabelNextExperience))
+                    .addComponent(jLabelNextExperience)
+                    .addComponent(jComboBoxLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPaneMain)
                 .addContainerGap())
@@ -549,15 +671,11 @@ public class Client extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonConnectToServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectToServerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonConnectToServerActionPerformed
-
     private void jButtonConnectToServerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConnectToServerMouseClicked
         this.server = new Server();
         if (this.server.startConnection("localhost", 2600)) {
             cleanValues();
-            this.login = this.jTextFieldLogin.getText();
+            this.login = this.jComboBoxLogin.getSelectedItem().toString();
             String result = this.server.sendMessage("00001 " + this.login);
             String[] values = defaultParseLine(result);
 
@@ -570,10 +688,6 @@ public class Client extends javax.swing.JFrame {
             this.jLabelConnectToServed.setText("Connection failed");
         }
     }//GEN-LAST:event_jButtonConnectToServerMouseClicked
-
-    private void jButtonDisconnectFromServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisconnectFromServerActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonDisconnectFromServerActionPerformed
 
     private void jButtonDisconnectFromServerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDisconnectFromServerMouseClicked
         if (this.server.stopConnection()) {
@@ -599,6 +713,10 @@ public class Client extends javax.swing.JFrame {
 
     private void jButtonSkillsDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSkillsDetailsMouseClicked
         this.skills = new ArrayList<>();
+        this.jComboBoxSkills.removeAllItems();
+        this.jComboBoxStudySkills.removeAllItems();
+        this.jComboBoxCancelStudySkill.removeAllItems();
+        
         String result = this.server.sendMessage("10002 GET");
         List<String[]> values = specialParseLine(result);
         for (String[] value : values) {
@@ -617,15 +735,13 @@ public class Client extends javax.swing.JFrame {
             this.skills.add(skill);
             this.jComboBoxSkills.addItem(skill);
             this.jComboBoxStudySkills.addItem(skill);
+            this.jComboBoxCancelStudySkill.addItem(skill);
         }
 
         this.jComboBoxSkills.setSelectedIndex(0);
         this.jComboBoxStudySkills.setSelectedIndex(0);
+        this.jComboBoxCancelStudySkill.setSelectedIndex(0);
     }//GEN-LAST:event_jButtonSkillsDetailsMouseClicked
-
-    private void jButtonSkillsDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkillsDetailsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSkillsDetailsActionPerformed
 
     private void jButtonActionDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActionDetailsMouseClicked
         String result = this.server.sendMessage("10003 GET");
@@ -636,8 +752,12 @@ public class Client extends javax.swing.JFrame {
         this.jLabelActionEndDate.setText(values[3]);
     }//GEN-LAST:event_jButtonActionDetailsMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void jButtonAbilitiesDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAbilitiesDetailsMouseClicked
         this.abilities = new ArrayList<>();
+        this.jComboAbilities.removeAllItems();
+        this.jComboBoxStudyAbility.removeAllItems();
+        this.jComboBoxCancelStudyAbility.removeAllItems();
+        
         String result = this.server.sendMessage("10004 GET");
         List<String[]> values = specialParseLine(result);
         for (String[] value : values) {
@@ -659,9 +779,14 @@ public class Client extends javax.swing.JFrame {
 
             this.abilities.add(ability);
             this.jComboAbilities.addItem(ability);
+            this.jComboBoxStudyAbility.addItem(ability);
+            this.jComboBoxCancelStudyAbility.addItem(ability);
         }
+        
         this.jComboAbilities.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton1MouseClicked
+        this.jComboBoxStudyAbility.setSelectedIndex(0);
+        this.jComboBoxCancelStudyAbility.setSelectedIndex(0);
+    }//GEN-LAST:event_jButtonAbilitiesDetailsMouseClicked
 
     private void jButtonFinishedActionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFinishedActionMouseClicked
         String result = this.server.sendMessage("10005 GET");
@@ -672,6 +797,8 @@ public class Client extends javax.swing.JFrame {
 
     private void jButtonItemsDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonItemsDetailsMouseClicked
         this.items = new HashMap<>();
+        this.jComboBoxItemsDetails.removeAllItems();
+        
         String result = this.server.sendMessage("10006 GET");
         List<String[]> values = specialParseLine(result);
         for (String[] value : values) {
@@ -691,20 +818,24 @@ public class Client extends javax.swing.JFrame {
         this.jComboBoxItemsDetails.setSelectedItem(0);
     }//GEN-LAST:event_jButtonItemsDetailsMouseClicked
 
-    private void jButtonItemsDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItemsDetailsActionPerformed
-
-    }//GEN-LAST:event_jButtonItemsDetailsActionPerformed
-
     private void jButtonStorageItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStorageItemsMouseClicked
+        this.jComboBoxStorageItems.removeAllItems();
+        this.jComboBoxPutOnClothes.removeAllItems();
+        
         String result = this.server.sendMessage("10007 GET");
         String[] values = defaultParseLine(result);
         Stream.of(values).forEach(it -> {
             this.jComboBoxStorageItems.addItem(this.items.get(Long.valueOf(it)));
+            this.jComboBoxPutOnClothes.addItem(this.items.get(Long.valueOf(it)));
         });
+        
         this.jComboBoxStorageItems.setSelectedIndex(0);
+        this.jComboBoxPutOnClothes.setSelectedIndex(0);
     }//GEN-LAST:event_jButtonStorageItemsMouseClicked
 
     private void jButtonPlayerClothesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlayerClothesMouseClicked
+        this.jComboBoxPlayerClothes.removeAllItems();
+        
         String result = this.server.sendMessage("10008 GET");
         String[] values = defaultParseLine(result);
         Stream.of(values).forEach(it -> {
@@ -726,12 +857,51 @@ public class Client extends javax.swing.JFrame {
         String result = this.server.sendMessage("00002 " + type);
         String[] values = defaultParseLine(result);
         this.jLabelStudySkillStatus.setText(values[0]);
-        
+
         if (OK_STATUS.equals(values[0])) {
             this.jLabelStudySkillStartDate.setText(values[1]);
             this.jLabelStudySkillEndDate.setText(values[2]);
         }
     }//GEN-LAST:event_jButtonStudySkillMouseClicked
+
+    private void jButtonCancelStudySkillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelStudySkillMouseClicked
+        String type = ((Skill) this.jComboBoxCancelStudySkill.getSelectedItem()).getType();
+        String result = this.server.sendMessage("00003 " + type);
+        String[] values = defaultParseLine(result);
+        this.jLabelCancelStudySkillStatus.setText(values[0]);
+    }//GEN-LAST:event_jButtonCancelStudySkillMouseClicked
+
+    private void jButtonStudyAbilityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStudyAbilityMouseClicked
+        String type = ((Ability) this.jComboBoxStudyAbility.getSelectedItem()).getType();
+        String result = this.server.sendMessage("00004 " + type);
+        String[] values = defaultParseLine(result);
+        this.jLabelStudyAbilityStatus.setText(values[0]);
+
+        if (OK_STATUS.equals(values[0])) {
+            this.jLabelStudyAbilityStartDate.setText(values[1]);
+            this.jLabelStudyAbilityEndDate.setText(values[2]);
+        }
+    }//GEN-LAST:event_jButtonStudyAbilityMouseClicked
+
+    private void jButtonCancelStudyAbilityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelStudyAbilityMouseClicked
+        String type = ((Ability) this.jComboBoxCancelStudyAbility.getSelectedItem()).getType();
+        String result = this.server.sendMessage("00005 " + type);
+        String[] values = defaultParseLine(result);
+        this.jLabelCancelStudyAbilityStatus.setText(values[0]);
+    }//GEN-LAST:event_jButtonCancelStudyAbilityMouseClicked
+
+    private void jButtonPutOnClothesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPutOnClothesMouseClicked
+        Item item = (Item) this.jComboBoxPutOnClothes.getSelectedItem();
+        long id = item.getId();
+        String result = this.server.sendMessage("00006 " + id);
+        String[] values = defaultParseLine(result);
+        this.jLabelPutOnClothesStatus.setText(values[0]);
+        
+        if (OK_STATUS.equals(values[0])) {
+            this.jComboBoxPutOnClothes.removeItem(item);
+            this.jComboBoxStorageItems.removeItem(item);
+        }
+    }//GEN-LAST:event_jButtonPutOnClothesMouseClicked
 
     private void cleanValues() {
         this.jLabelConnectToServed.setText("");
@@ -773,6 +943,20 @@ public class Client extends javax.swing.JFrame {
         this.jLabelStudySkillStatus.setText("");
         this.jLabelStudySkillStartDate.setText("");
         this.jLabelStudySkillEndDate.setText("");
+
+        this.jComboBoxCancelStudySkill.removeAllItems();
+        this.jLabelCancelStudySkillStatus.setText("");
+
+        this.jComboBoxStudyAbility.removeAllItems();
+        this.jLabelStudyAbilityStatus.setText("");
+        this.jLabelStudyAbilityStartDate.setText("");
+        this.jLabelStudyAbilityEndDate.setText("");
+
+        this.jComboBoxCancelStudyAbility.removeAllItems();
+        this.jLabelCancelStudyAbilityStatus.setText("");
+        
+        this.jComboBoxPutOnClothes.removeAllItems();
+        this.jLabelPutOnClothesStatus.setText("");
     }
 
     private String[] defaultParseLine(String line) {
@@ -832,23 +1016,32 @@ public class Client extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAbilitiesDetails;
     private javax.swing.JButton jButtonActionDetails;
+    private javax.swing.JButton jButtonCancelStudyAbility;
+    private javax.swing.JButton jButtonCancelStudySkill;
     private javax.swing.JButton jButtonConnectToServer;
     private javax.swing.JButton jButtonDisconnectFromServer;
     private javax.swing.JButton jButtonFinishedAction;
     private javax.swing.JButton jButtonItemsDetails;
     private javax.swing.JButton jButtonPlayerCharacteristics;
     private javax.swing.JButton jButtonPlayerClothes;
+    private javax.swing.JButton jButtonPutOnClothes;
     private javax.swing.JButton jButtonSkillsDetails;
     private javax.swing.JButton jButtonStorageDetails;
     private javax.swing.JButton jButtonStorageItems;
+    private javax.swing.JButton jButtonStudyAbility;
     private javax.swing.JButton jButtonStudySkill;
     private javax.swing.JComboBox<Ability> jComboAbilities;
+    private javax.swing.JComboBox<Ability> jComboBoxCancelStudyAbility;
+    private javax.swing.JComboBox<Skill> jComboBoxCancelStudySkill;
     private javax.swing.JComboBox<Item> jComboBoxItemsDetails;
+    private javax.swing.JComboBox<String> jComboBoxLogin;
     private javax.swing.JComboBox<Item> jComboBoxPlayerClothes;
+    private javax.swing.JComboBox<Item> jComboBoxPutOnClothes;
     private javax.swing.JComboBox<Skill> jComboBoxSkills;
     private javax.swing.JComboBox<Item> jComboBoxStorageItems;
+    private javax.swing.JComboBox<Ability> jComboBoxStudyAbility;
     private javax.swing.JComboBox<Skill> jComboBoxStudySkills;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -863,6 +1056,12 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -874,6 +1073,8 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelActionEndDate;
     private javax.swing.JLabel jLabelActionStartDate;
     private javax.swing.JLabel jLabelActionType;
+    private javax.swing.JLabel jLabelCancelStudyAbilityStatus;
+    private javax.swing.JLabel jLabelCancelStudySkillStatus;
     private javax.swing.JLabel jLabelConnectToServed;
     private javax.swing.JLabel jLabelCurrentLevel;
     private javax.swing.JLabel jLabelExperience;
@@ -884,16 +1085,19 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPlayerDodge;
     private javax.swing.JLabel jLabelPlayerHeat;
     private javax.swing.JLabel jLabelPlayerStrength;
+    private javax.swing.JLabel jLabelPutOnClothesStatus;
     private javax.swing.JLabel jLabelSnowballs;
     private javax.swing.JLabel jLabelSnowflakes;
     private javax.swing.JLabel jLabelStorageSize;
     private javax.swing.JLabel jLabelStorageType;
+    private javax.swing.JLabel jLabelStudyAbilityEndDate;
+    private javax.swing.JLabel jLabelStudyAbilityStartDate;
+    private javax.swing.JLabel jLabelStudyAbilityStatus;
     private javax.swing.JLabel jLabelStudySkillEndDate;
     private javax.swing.JLabel jLabelStudySkillStartDate;
     private javax.swing.JLabel jLabelStudySkillStatus;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPaneMain;
-    private javax.swing.JTextField jTextFieldLogin;
     // End of variables declaration//GEN-END:variables
 }
