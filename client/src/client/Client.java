@@ -127,6 +127,8 @@ public class Client extends javax.swing.JFrame {
         jButtonStartSearch = new javax.swing.JButton();
         jButtonStopSearch = new javax.swing.JButton();
         jLabelBattleStatus = new javax.swing.JLabel();
+        jButtonReadyForBattle = new javax.swing.JButton();
+        jLabelBattleReady = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelCurrentLevel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -649,17 +651,32 @@ public class Client extends javax.swing.JFrame {
 
         jLabelBattleStatus.setText("IN QUEUE");
 
+        jButtonReadyForBattle.setText("Ready for battle");
+        jButtonReadyForBattle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonReadyForBattleMouseClicked(evt);
+            }
+        });
+
+        jLabelBattleReady.setText("READY");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonStartSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonStopSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelBattleStatus)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButtonReadyForBattle)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelBattleReady))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButtonStartSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonStopSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelBattleStatus)))
                 .addContainerGap(502, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -670,7 +687,11 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(jButtonStartSearch)
                     .addComponent(jButtonStopSearch)
                     .addComponent(jLabelBattleStatus))
-                .addContainerGap(544, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonReadyForBattle)
+                    .addComponent(jLabelBattleReady))
+                .addContainerGap(515, Short.MAX_VALUE))
         );
 
         jTabbedPaneMain.addTab("Battle", jPanel3);
@@ -697,7 +718,7 @@ public class Client extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPaneMain, javax.swing.GroupLayout.DEFAULT_SIZE, 873, Short.MAX_VALUE)
+                        .addComponent(jTabbedPaneMain)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1003,7 +1024,7 @@ public class Client extends javax.swing.JFrame {
     private void jButtonStartSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartSearchMouseClicked
         String result = this.server.sendMessage("20001 SEARCH");
         String[] values = defaultParseLine(result);
-        
+
         if (OK_STATUS.equals(values[0])) {
             this.jLabelBattleStatus.setText("IN QUEUE");
         } else {
@@ -1014,13 +1035,24 @@ public class Client extends javax.swing.JFrame {
     private void jButtonStopSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStopSearchMouseClicked
         String result = this.server.sendMessage("20002 CANCEL");
         String[] values = defaultParseLine(result);
-        
+
         if (OK_STATUS.equals(values[0])) {
             this.jLabelBattleStatus.setText("");
         } else {
             this.jLabelBattleStatus.setText(values[0]);
         }
     }//GEN-LAST:event_jButtonStopSearchMouseClicked
+
+    private void jButtonReadyForBattleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonReadyForBattleMouseClicked
+        String result = this.server.sendMessage("20003 READY");
+        String[] values = defaultParseLine(result);
+
+        if (OK_STATUS.equals(values[0])) {
+            this.jLabelBattleReady.setText("");
+        } else {
+            this.jLabelBattleReady.setText(values[0]);
+        }
+    }//GEN-LAST:event_jButtonReadyForBattleMouseClicked
 
     private void cleanValues() {
         this.jLabelConnectToServed.setText("");
@@ -1058,7 +1090,6 @@ public class Client extends javax.swing.JFrame {
         this.jLabelPlayerStrength.setText("");
 
         //--------------------------------------------------
-        
         this.jComboBoxStudySkills.removeAllItems();
         this.jLabelStudySkillStatus.setText("");
         this.jLabelStudySkillStartDate.setText("");
@@ -1080,10 +1111,11 @@ public class Client extends javax.swing.JFrame {
 
         this.jComboBoxTakeOffClothes.removeAllItems();
         this.jLabelTakeOffClothes.setText("");
-        
+
         //--------------------------------------------------
-        
         this.jLabelBattleStatus.setText("");
+
+        this.jLabelBattleReady.setText("");
     }
 
     private String[] defaultParseLine(String line) {
@@ -1154,6 +1186,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPlayerCharacteristics;
     private javax.swing.JButton jButtonPlayerClothes;
     private javax.swing.JButton jButtonPutOnClothes;
+    private javax.swing.JButton jButtonReadyForBattle;
     private javax.swing.JButton jButtonSkillsDetails;
     private javax.swing.JButton jButtonStartSearch;
     private javax.swing.JButton jButtonStopSearch;
@@ -1205,6 +1238,7 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelActionEndDate;
     private javax.swing.JLabel jLabelActionStartDate;
     private javax.swing.JLabel jLabelActionType;
+    private javax.swing.JLabel jLabelBattleReady;
     private javax.swing.JLabel jLabelBattleStatus;
     private javax.swing.JLabel jLabelCancelStudyAbilityStatus;
     private javax.swing.JLabel jLabelCancelStudySkillStatus;

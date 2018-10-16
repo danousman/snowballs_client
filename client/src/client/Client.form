@@ -31,7 +31,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jTabbedPaneMain" pref="873" max="32767" attributes="0"/>
+                      <Component id="jTabbedPaneMain" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
@@ -932,11 +932,20 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonStartSearch" min="-2" pref="142" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonStopSearch" min="-2" pref="142" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabelBattleStatus" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jButtonReadyForBattle" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabelBattleReady" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jButtonStartSearch" min="-2" pref="142" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonStopSearch" min="-2" pref="142" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabelBattleStatus" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace pref="502" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -950,7 +959,12 @@
                           <Component id="jButtonStopSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelBattleStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="544" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonReadyForBattle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelBattleReady" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="515" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -975,6 +989,19 @@
             <Component class="javax.swing.JLabel" name="jLabelBattleStatus">
               <Properties>
                 <Property name="text" type="java.lang.String" value="IN QUEUE"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonReadyForBattle">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ready for battle"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonReadyForBattleMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelBattleReady">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="READY"/>
               </Properties>
             </Component>
           </SubComponents>
