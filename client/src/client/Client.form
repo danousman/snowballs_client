@@ -41,7 +41,7 @@
                               <Component id="jComboBoxLogin" min="-2" pref="143" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButtonConnectToServer" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButtonDisconnectFromServer" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -57,7 +57,7 @@
                               <Component id="jLabelNextExperience" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="897" max="32767" attributes="0"/>
+                      <EmptySpace min="1353" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -930,23 +930,47 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jButtonReadyForBattle" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabelBattleReady" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jButtonBattleReadyForBattle" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabelBattleReady" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jButtonStartSearch" min="-2" pref="142" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButtonStopSearch" min="-2" pref="142" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabelBattleStatus" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jButtonStartSearch" min="-2" pref="142" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonStopSearch" min="-2" pref="142" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabelBattleStatus" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jProgressBarBattlePlayerEnergy" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jProgressBarBattleEnemyPlayerEnergy" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jProgressBarBattlePlayerHeat" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <EmptySpace pref="142" max="32767" attributes="0"/>
+                                      <Component id="jProgressBarBattleEnemyPlayerHeat" min="-2" pref="192" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabelBattlePlayerName" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jLabelBattleEnemyPlayerName" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="332" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="502" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -961,10 +985,25 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonReadyForBattle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonBattleReadyForBattle" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelBattleReady" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="515" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelBattlePlayerName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelBattleEnemyPlayerName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jProgressBarBattlePlayerHeat" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="jProgressBarBattleEnemyPlayerHeat" min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jProgressBarBattlePlayerEnergy" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="jProgressBarBattleEnemyPlayerEnergy" min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="427" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -991,18 +1030,37 @@
                 <Property name="text" type="java.lang.String" value="IN QUEUE"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonReadyForBattle">
+            <Component class="javax.swing.JButton" name="jButtonBattleReadyForBattle">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ready for battle"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonReadyForBattleMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonBattleReadyForBattleMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelBattleReady">
               <Properties>
                 <Property name="text" type="java.lang.String" value="READY"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelBattlePlayerName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="danousman"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JProgressBar" name="jProgressBarBattlePlayerHeat">
+            </Component>
+            <Component class="javax.swing.JProgressBar" name="jProgressBarBattlePlayerEnergy">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelBattleEnemyPlayerName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="danousman1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JProgressBar" name="jProgressBarBattleEnemyPlayerHeat">
+            </Component>
+            <Component class="javax.swing.JProgressBar" name="jProgressBarBattleEnemyPlayerEnergy">
             </Component>
           </SubComponents>
         </Container>

@@ -5,6 +5,7 @@
  */
 package client;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +22,12 @@ public class Client extends javax.swing.JFrame {
     private static final String OK_STATUS = "OK";
     private static final String FAIL_STATUS = "FAIL";
 
+    private static final int COMMAND_BEGIN_INDEX = 0;
+    private static final int COMMAND_END_INDEX = 5;
+
     private Server server;
     private String login;
+    private int heat;
     private List<Skill> skills;
     private List<Ability> abilities;
     private Map<Long, Item> items;
@@ -127,8 +132,14 @@ public class Client extends javax.swing.JFrame {
         jButtonStartSearch = new javax.swing.JButton();
         jButtonStopSearch = new javax.swing.JButton();
         jLabelBattleStatus = new javax.swing.JLabel();
-        jButtonReadyForBattle = new javax.swing.JButton();
+        jButtonBattleReadyForBattle = new javax.swing.JButton();
         jLabelBattleReady = new javax.swing.JLabel();
+        jLabelBattlePlayerName = new javax.swing.JLabel();
+        jProgressBarBattlePlayerHeat = new javax.swing.JProgressBar();
+        jProgressBarBattlePlayerEnergy = new javax.swing.JProgressBar();
+        jLabelBattleEnemyPlayerName = new javax.swing.JLabel();
+        jProgressBarBattleEnemyPlayerHeat = new javax.swing.JProgressBar();
+        jProgressBarBattleEnemyPlayerEnergy = new javax.swing.JProgressBar();
         jLabel6 = new javax.swing.JLabel();
         jLabelCurrentLevel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -651,14 +662,19 @@ public class Client extends javax.swing.JFrame {
 
         jLabelBattleStatus.setText("IN QUEUE");
 
-        jButtonReadyForBattle.setText("Ready for battle");
-        jButtonReadyForBattle.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonBattleReadyForBattle.setText("Ready for battle");
+        jButtonBattleReadyForBattle.setEnabled(false);
+        jButtonBattleReadyForBattle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonReadyForBattleMouseClicked(evt);
+                jButtonBattleReadyForBattleMouseClicked(evt);
             }
         });
 
         jLabelBattleReady.setText("READY");
+
+        jLabelBattlePlayerName.setText("danousman");
+
+        jLabelBattleEnemyPlayerName.setText("danousman1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -668,16 +684,33 @@ public class Client extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButtonReadyForBattle)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelBattleReady))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButtonStartSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonStopSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelBattleStatus)))
-                .addContainerGap(502, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jButtonBattleReadyForBattle)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelBattleReady))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jButtonStartSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonStopSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelBattleStatus)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jProgressBarBattlePlayerEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jProgressBarBattleEnemyPlayerEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jProgressBarBattlePlayerHeat, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                                .addComponent(jProgressBarBattleEnemyPlayerHeat, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabelBattlePlayerName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelBattleEnemyPlayerName)))
+                        .addGap(332, 332, 332))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -689,9 +722,21 @@ public class Client extends javax.swing.JFrame {
                     .addComponent(jLabelBattleStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonReadyForBattle)
+                    .addComponent(jButtonBattleReadyForBattle)
                     .addComponent(jLabelBattleReady))
-                .addContainerGap(515, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelBattlePlayerName)
+                    .addComponent(jLabelBattleEnemyPlayerName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBarBattlePlayerHeat, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jProgressBarBattleEnemyPlayerHeat, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBarBattlePlayerEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jProgressBarBattleEnemyPlayerEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(427, Short.MAX_VALUE))
         );
 
         jTabbedPaneMain.addTab("Battle", jPanel3);
@@ -727,7 +772,7 @@ public class Client extends javax.swing.JFrame {
                                 .addComponent(jComboBoxLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonConnectToServer)
-                                .addGap(112, 112, 112)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonDisconnectFromServer)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel6)
@@ -770,20 +815,24 @@ public class Client extends javax.swing.JFrame {
     private void jButtonConnectToServerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConnectToServerMouseClicked
         this.server = new Server();
         if (this.server.startConnection("localhost", 2600)) {
+            new ServerListener().start();
             cleanValues();
             this.login = this.jComboBoxLogin.getSelectedItem().toString();
-            String result = this.server.sendMessage("00001 " + this.login);
-            String[] values = defaultParseLine(result);
-
-            this.jLabelCurrentLevel.setText(values[0]);
-            this.jLabelExperience.setText(values[1]);
-            this.jLabelNextExperience.setText(values[2]);
-
-            this.jLabelConnectToServed.setText("Connected");
+            this.server.sendMessage("00001 " + this.login);
         } else {
             this.jLabelConnectToServed.setText("Connection failed");
         }
     }//GEN-LAST:event_jButtonConnectToServerMouseClicked
+
+    private void connectToServer(String response) {
+        String[] values = defaultParseLine(response);
+
+        this.jLabelCurrentLevel.setText(values[0]);
+        this.jLabelExperience.setText(values[1]);
+        this.jLabelNextExperience.setText(values[2]);
+
+        this.jLabelConnectToServed.setText("Connected");
+    }
 
     private void jButtonDisconnectFromServerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDisconnectFromServerMouseClicked
         if (this.server.stopConnection()) {
@@ -798,14 +847,17 @@ public class Client extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jButtonStorageDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStorageDetailsMouseClicked
-        String result = this.server.sendMessage("10001 GET");
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("10001 GET");
+    }//GEN-LAST:event_jButtonStorageDetailsMouseClicked
+
+    private void storageDetails(String response) {
+        String[] values = defaultParseLine(response);
         this.jLabelSnowballs.setText(values[0]);
         this.jLabelSnowflakes.setText(values[1]);
         this.jLabelIcicles.setText(values[2]);
         this.jLabelStorageType.setText(values[3]);
         this.jLabelStorageSize.setText(values[4]);
-    }//GEN-LAST:event_jButtonStorageDetailsMouseClicked
+    }
 
     private void jButtonSkillsDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSkillsDetailsMouseClicked
         this.skills = new ArrayList<>();
@@ -813,8 +865,11 @@ public class Client extends javax.swing.JFrame {
         this.jComboBoxStudySkills.removeAllItems();
         this.jComboBoxCancelStudySkill.removeAllItems();
 
-        String result = this.server.sendMessage("10002 GET");
-        List<String[]> values = specialParseLine(result);
+        this.server.sendMessage("10002 GET");
+    }//GEN-LAST:event_jButtonSkillsDetailsMouseClicked
+
+    private void skillsDetails(String response) {
+        List<String[]> values = specialParseLine(response);
         for (String[] value : values) {
             Skill skill = new Skill(
                     Long.valueOf(value[0]),
@@ -837,16 +892,19 @@ public class Client extends javax.swing.JFrame {
             this.jComboBoxStudySkills.setSelectedIndex(0);
             this.jComboBoxCancelStudySkill.setSelectedIndex(0);
         }
-    }//GEN-LAST:event_jButtonSkillsDetailsMouseClicked
+    }
 
     private void jButtonActionDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActionDetailsMouseClicked
-        String result = this.server.sendMessage("10003 GET");
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("10003 GET");
+    }//GEN-LAST:event_jButtonActionDetailsMouseClicked
+
+    private void actionDetails(String response) {
+        String[] values = defaultParseLine(response);
         this.jLabelActionType.setText(values[0]);
         this.jLabelActionAction.setText(values[1]);
         this.jLabelActionStartDate.setText(values[2]);
         this.jLabelActionEndDate.setText(values[3]);
-    }//GEN-LAST:event_jButtonActionDetailsMouseClicked
+    }
 
     private void jButtonAbilitiesDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAbilitiesDetailsMouseClicked
         this.abilities = new ArrayList<>();
@@ -854,8 +912,11 @@ public class Client extends javax.swing.JFrame {
         this.jComboBoxStudyAbility.removeAllItems();
         this.jComboBoxCancelStudyAbility.removeAllItems();
 
-        String result = this.server.sendMessage("10004 GET");
-        List<String[]> values = specialParseLine(result);
+        this.server.sendMessage("10004 GET");
+    }//GEN-LAST:event_jButtonAbilitiesDetailsMouseClicked
+
+    private void abilitiesDetails(String response) {
+        List<String[]> values = specialParseLine(response);
         for (String[] value : values) {
             Ability ability = new Ability(
                     Long.valueOf(value[0]),
@@ -882,21 +943,27 @@ public class Client extends javax.swing.JFrame {
             this.jComboBoxStudyAbility.setSelectedIndex(0);
             this.jComboBoxCancelStudyAbility.setSelectedIndex(0);
         }
-    }//GEN-LAST:event_jButtonAbilitiesDetailsMouseClicked
+    }
 
     private void jButtonFinishedActionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFinishedActionMouseClicked
-        String result = this.server.sendMessage("10005 GET");
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("10005 GET");
+    }//GEN-LAST:event_jButtonFinishedActionMouseClicked
+
+    private void finishedAction(String response) {
+        String[] values = defaultParseLine(response);
         this.jLabelFinishedActionType.setText(values[0]);
         this.jLabelFinishedActionAction.setText(values[1]);
-    }//GEN-LAST:event_jButtonFinishedActionMouseClicked
+    }
 
     private void jButtonItemsDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonItemsDetailsMouseClicked
         this.items = new HashMap<>();
         this.jComboBoxItemsDetails.removeAllItems();
 
-        String result = this.server.sendMessage("10006 GET");
-        List<String[]> values = specialParseLine(result);
+        this.server.sendMessage("10006 GET");
+    }//GEN-LAST:event_jButtonItemsDetailsMouseClicked
+
+    private void itemsDetails(String response) {
+        List<String[]> values = specialParseLine(response);
         for (String[] value : values) {
             Item item = new Item(
                     Long.valueOf(value[0]),
@@ -913,14 +980,17 @@ public class Client extends javax.swing.JFrame {
 
             this.jComboBoxItemsDetails.setSelectedItem(0);
         }
-    }//GEN-LAST:event_jButtonItemsDetailsMouseClicked
+    }
 
     private void jButtonStorageItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStorageItemsMouseClicked
         this.jComboBoxStorageItems.removeAllItems();
         this.jComboBoxPutOnClothes.removeAllItems();
 
-        String result = this.server.sendMessage("10007 GET");
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("10007 GET");
+    }//GEN-LAST:event_jButtonStorageItemsMouseClicked
+
+    private void storageItems(String response) {
+        String[] values = defaultParseLine(response);
         Stream.of(values).forEach(it -> {
             this.jComboBoxStorageItems.addItem(this.items.get(Long.valueOf(it)));
             this.jComboBoxPutOnClothes.addItem(this.items.get(Long.valueOf(it)));
@@ -928,14 +998,17 @@ public class Client extends javax.swing.JFrame {
             this.jComboBoxStorageItems.setSelectedIndex(0);
             this.jComboBoxPutOnClothes.setSelectedIndex(0);
         });
-    }//GEN-LAST:event_jButtonStorageItemsMouseClicked
+    }
 
     private void jButtonPlayerClothesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlayerClothesMouseClicked
         this.jComboBoxPlayerClothes.removeAllItems();
         this.jComboBoxTakeOffClothes.removeAllItems();
 
-        String result = this.server.sendMessage("10008 GET");
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("10008 GET");
+    }//GEN-LAST:event_jButtonPlayerClothesMouseClicked
+
+    private void playerClothes(String response) {
+        String[] values = defaultParseLine(response);
         Stream.of(values).forEach(it -> {
             this.jComboBoxPlayerClothes.addItem(this.items.get(Long.valueOf(it)));
             this.jComboBoxTakeOffClothes.addItem(this.items.get(Long.valueOf(it)));
@@ -943,59 +1016,80 @@ public class Client extends javax.swing.JFrame {
             this.jComboBoxPlayerClothes.setSelectedIndex(0);
             this.jComboBoxTakeOffClothes.setSelectedIndex(0);
         });
-    }//GEN-LAST:event_jButtonPlayerClothesMouseClicked
+    }
 
     private void jButtonPlayerCharacteristicsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPlayerCharacteristicsMouseClicked
-        String result = this.server.sendMessage("10009 GET");
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("10009 GET");
+    }//GEN-LAST:event_jButtonPlayerCharacteristicsMouseClicked
+
+    private void playerCharacteristics(String response) {
+        String[] values = defaultParseLine(response);
+        int heat = Integer.valueOf(values[0]);
+        this.heat = heat;
         this.jLabelPlayerHeat.setText(values[0]);
         this.jLabelPlayerDodge.setText(values[1]);
         this.jLabelPlayerStrength.setText(values[2]);
-    }//GEN-LAST:event_jButtonPlayerCharacteristicsMouseClicked
+    }
 
     private void jButtonStudySkillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStudySkillMouseClicked
         String type = ((Skill) this.jComboBoxStudySkills.getSelectedItem()).getType();
-        String result = this.server.sendMessage("00002 " + type);
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("00002 " + type);
+    }//GEN-LAST:event_jButtonStudySkillMouseClicked
+
+    private void studySkill(String response) {
+        String[] values = defaultParseLine(response);
         this.jLabelStudySkillStatus.setText(values[0]);
 
         if (OK_STATUS.equals(values[0])) {
             this.jLabelStudySkillStartDate.setText(values[1]);
             this.jLabelStudySkillEndDate.setText(values[2]);
         }
-    }//GEN-LAST:event_jButtonStudySkillMouseClicked
+    }
 
     private void jButtonCancelStudySkillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelStudySkillMouseClicked
         String type = ((Skill) this.jComboBoxCancelStudySkill.getSelectedItem()).getType();
-        String result = this.server.sendMessage("00003 " + type);
-        String[] values = defaultParseLine(result);
-        this.jLabelCancelStudySkillStatus.setText(values[0]);
+        this.server.sendMessage("00003 " + type);
     }//GEN-LAST:event_jButtonCancelStudySkillMouseClicked
+
+    private void cancelStudySkill(String response) {
+        String[] values = defaultParseLine(response);
+        this.jLabelCancelStudySkillStatus.setText(values[0]);
+    }
 
     private void jButtonStudyAbilityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStudyAbilityMouseClicked
         String type = ((Ability) this.jComboBoxStudyAbility.getSelectedItem()).getType();
-        String result = this.server.sendMessage("00004 " + type);
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("00004 " + type);
+    }//GEN-LAST:event_jButtonStudyAbilityMouseClicked
+
+    private void studyAbility(String response) {
+        String[] values = defaultParseLine(response);
         this.jLabelStudyAbilityStatus.setText(values[0]);
 
         if (OK_STATUS.equals(values[0])) {
             this.jLabelStudyAbilityStartDate.setText(values[1]);
             this.jLabelStudyAbilityEndDate.setText(values[2]);
         }
-    }//GEN-LAST:event_jButtonStudyAbilityMouseClicked
+    }
 
     private void jButtonCancelStudyAbilityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelStudyAbilityMouseClicked
         String type = ((Ability) this.jComboBoxCancelStudyAbility.getSelectedItem()).getType();
-        String result = this.server.sendMessage("00005 " + type);
-        String[] values = defaultParseLine(result);
-        this.jLabelCancelStudyAbilityStatus.setText(values[0]);
+        this.server.sendMessage("00005 " + type);
     }//GEN-LAST:event_jButtonCancelStudyAbilityMouseClicked
+
+    private void cancelStudyAbility(String response) {
+        String[] values = defaultParseLine(response);
+        this.jLabelCancelStudyAbilityStatus.setText(values[0]);
+    }
 
     private void jButtonPutOnClothesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPutOnClothesMouseClicked
         Item item = (Item) this.jComboBoxPutOnClothes.getSelectedItem();
         long id = item.getId();
-        String result = this.server.sendMessage("00006 " + id);
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("00006 " + id);
+    }//GEN-LAST:event_jButtonPutOnClothesMouseClicked
+
+    private void putOnClothes(String reaponse) {
+        Item item = (Item) this.jComboBoxPutOnClothes.getSelectedItem();
+        String[] values = defaultParseLine(reaponse);
         this.jLabelPutOnClothesStatus.setText(values[0]);
 
         if (OK_STATUS.equals(values[0])) {
@@ -1004,13 +1098,17 @@ public class Client extends javax.swing.JFrame {
             this.jComboBoxPlayerClothes.addItem(item);
             this.jComboBoxTakeOffClothes.addItem(item);
         }
-    }//GEN-LAST:event_jButtonPutOnClothesMouseClicked
+    }
 
     private void jButtonTakeOffClothesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTakeOffClothesMouseClicked
         Item item = (Item) this.jComboBoxTakeOffClothes.getSelectedItem();
         long id = item.getId();
-        String result = this.server.sendMessage("00007 " + id);
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("00007 " + id);
+    }//GEN-LAST:event_jButtonTakeOffClothesMouseClicked
+
+    private void takeOffClothes(String response) {
+        Item item = (Item) this.jComboBoxTakeOffClothes.getSelectedItem();
+        String[] values = defaultParseLine(response);
         this.jLabelTakeOffClothes.setText(values[0]);
 
         if (OK_STATUS.equals(values[0])) {
@@ -1019,40 +1117,77 @@ public class Client extends javax.swing.JFrame {
             this.jComboBoxStorageItems.addItem(item);
             this.jComboBoxPutOnClothes.addItem(item);
         }
-    }//GEN-LAST:event_jButtonTakeOffClothesMouseClicked
+    }
 
     private void jButtonStartSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartSearchMouseClicked
-        String result = this.server.sendMessage("20001 SEARCH");
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("20001 SEARCH");
+    }//GEN-LAST:event_jButtonStartSearchMouseClicked
+
+    private void startSearch(String response) {
+        String[] values = defaultParseLine(response);
 
         if (OK_STATUS.equals(values[0])) {
             this.jLabelBattleStatus.setText("IN QUEUE");
         } else {
             this.jLabelBattleStatus.setText(values[0]);
         }
-    }//GEN-LAST:event_jButtonStartSearchMouseClicked
+    }
 
     private void jButtonStopSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStopSearchMouseClicked
-        String result = this.server.sendMessage("20002 CANCEL");
-        String[] values = defaultParseLine(result);
+        this.server.sendMessage("20002 CANCEL");
+    }//GEN-LAST:event_jButtonStopSearchMouseClicked
+
+    private void stopSearch(String response) {
+        String[] values = defaultParseLine(response);
 
         if (OK_STATUS.equals(values[0])) {
             this.jLabelBattleStatus.setText("");
         } else {
             this.jLabelBattleStatus.setText(values[0]);
         }
-    }//GEN-LAST:event_jButtonStopSearchMouseClicked
+    }
 
-    private void jButtonReadyForBattleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonReadyForBattleMouseClicked
-        String result = this.server.sendMessage("20003 READY");
-        String[] values = defaultParseLine(result);
+    private void jButtonBattleReadyForBattleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBattleReadyForBattleMouseClicked
+        this.server.sendMessage("20003 READY");
+    }//GEN-LAST:event_jButtonBattleReadyForBattleMouseClicked
+
+    private void readyForBattle(String response) {
+        String[] values = defaultParseLine(response);
 
         if (OK_STATUS.equals(values[0])) {
             this.jLabelBattleReady.setText("");
         } else {
             this.jLabelBattleReady.setText(values[0]);
         }
-    }//GEN-LAST:event_jButtonReadyForBattleMouseClicked
+    }
+
+    private void battleSearched(String response) {
+        String[] values = defaultParseLine(response);
+        this.jLabelBattlePlayerName.setText(this.login);
+        this.jProgressBarBattlePlayerHeat.setMaximum(this.heat);
+        this.jProgressBarBattlePlayerHeat.setValue(this.heat);
+
+        this.jLabelBattleEnemyPlayerName.setText(values[0]);
+        int enemyHeat = Integer.valueOf(values[1]);
+        this.jProgressBarBattleEnemyPlayerHeat.setMaximum(enemyHeat);
+        this.jProgressBarBattleEnemyPlayerHeat.setValue(enemyHeat);
+        this.jButtonBattleReadyForBattle.setEnabled(true);
+    }
+
+    private void battleCharacteristics(String response) {
+        String[] values = defaultParseLine(response);
+        int playerHeat = Integer.valueOf(values[0]);
+        int playerEnergy = Float.valueOf(values[1].replace(",", ".")).intValue();
+        int enemyPlayerHeat = Integer.valueOf(values[2]);
+        int enemyPlayerEnergy = Float.valueOf(values[3].replace(",", ".")).intValue();
+
+        this.jProgressBarBattlePlayerHeat.setValue(playerHeat);
+        this.jProgressBarBattlePlayerEnergy.setMaximum(100);
+        this.jProgressBarBattlePlayerEnergy.setValue(playerEnergy);
+        this.jProgressBarBattleEnemyPlayerHeat.setValue(enemyPlayerHeat);
+        this.jProgressBarBattleEnemyPlayerEnergy.setMaximum(100);
+        this.jProgressBarBattleEnemyPlayerEnergy.setValue(enemyPlayerEnergy);
+    }
 
     private void cleanValues() {
         this.jLabelConnectToServed.setText("");
@@ -1116,6 +1251,17 @@ public class Client extends javax.swing.JFrame {
         this.jLabelBattleStatus.setText("");
 
         this.jLabelBattleReady.setText("");
+
+        this.jLabelBattlePlayerName.setText("");
+        this.jProgressBarBattlePlayerHeat.setMaximum(0);
+        this.jProgressBarBattlePlayerHeat.setValue(0);
+        this.jProgressBarBattlePlayerEnergy.setMaximum(0);
+        this.jProgressBarBattlePlayerEnergy.setValue(0);
+        this.jLabelBattleEnemyPlayerName.setText("");
+        this.jProgressBarBattleEnemyPlayerHeat.setMaximum(0);
+        this.jProgressBarBattleEnemyPlayerHeat.setValue(0);
+        this.jProgressBarBattleEnemyPlayerEnergy.setMaximum(0);
+        this.jProgressBarBattleEnemyPlayerEnergy.setValue(0);
     }
 
     private String[] defaultParseLine(String line) {
@@ -1174,9 +1320,95 @@ public class Client extends javax.swing.JFrame {
         });
     }
 
+    private class ServerListener extends Thread {
+
+        @Override
+        public void run() {
+            try {
+                String response;
+                while ((response = server.getIn().readLine()) != null) {
+                    String commandPrefix = response.substring(COMMAND_BEGIN_INDEX, COMMAND_END_INDEX);
+
+                    switch (commandPrefix) {
+                        case "00001":
+                            connectToServer(response);
+                            break;
+                        case "00002":
+                            studySkill(response);
+                            break;
+                        case "00003":
+                            cancelStudySkill(response);
+                            break;
+                        case "00004":
+                            studyAbility(response);
+                            break;
+                        case "00005":
+                            cancelStudyAbility(response);
+                            break;
+                        case "00006":
+                            putOnClothes(response);
+                            break;
+                        case "00007":
+                            takeOffClothes(response);
+                            break;
+
+                        case "10001":
+                            storageDetails(response);
+                            break;
+                        case "10002":
+                            skillsDetails(response);
+                            break;
+                        case "10003":
+                            actionDetails(response);
+                            break;
+                        case "10004":
+                            abilitiesDetails(response);
+                            break;
+                        case "10005":
+                            finishedAction(response);
+                            break;
+                        case "10006":
+                            itemsDetails(response);
+                            break;
+                        case "10007":
+                            storageItems(response);
+                            break;
+                        case "10008":
+                            playerClothes(response);
+                            break;
+                        case "10009":
+                            playerCharacteristics(response);
+                            break;
+
+                        case "20001":
+                            startSearch(response);
+                            break;
+                        case "20002":
+                            stopSearch(response);
+                            break;
+                        case "20003":
+                            readyForBattle(response);
+                            break;
+                        case "20004":
+                            battleSearched(response);
+                            break;
+                        case "20005":
+                            battleCharacteristics(response);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAbilitiesDetails;
     private javax.swing.JButton jButtonActionDetails;
+    private javax.swing.JButton jButtonBattleReadyForBattle;
     private javax.swing.JButton jButtonCancelStudyAbility;
     private javax.swing.JButton jButtonCancelStudySkill;
     private javax.swing.JButton jButtonConnectToServer;
@@ -1186,7 +1418,6 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPlayerCharacteristics;
     private javax.swing.JButton jButtonPlayerClothes;
     private javax.swing.JButton jButtonPutOnClothes;
-    private javax.swing.JButton jButtonReadyForBattle;
     private javax.swing.JButton jButtonSkillsDetails;
     private javax.swing.JButton jButtonStartSearch;
     private javax.swing.JButton jButtonStopSearch;
@@ -1238,6 +1469,8 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelActionEndDate;
     private javax.swing.JLabel jLabelActionStartDate;
     private javax.swing.JLabel jLabelActionType;
+    private javax.swing.JLabel jLabelBattleEnemyPlayerName;
+    private javax.swing.JLabel jLabelBattlePlayerName;
     private javax.swing.JLabel jLabelBattleReady;
     private javax.swing.JLabel jLabelBattleStatus;
     private javax.swing.JLabel jLabelCancelStudyAbilityStatus;
@@ -1267,6 +1500,10 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JProgressBar jProgressBarBattleEnemyPlayerEnergy;
+    private javax.swing.JProgressBar jProgressBarBattleEnemyPlayerHeat;
+    private javax.swing.JProgressBar jProgressBarBattlePlayerEnergy;
+    private javax.swing.JProgressBar jProgressBarBattlePlayerHeat;
     private javax.swing.JTabbedPane jTabbedPaneMain;
     // End of variables declaration//GEN-END:variables
 }

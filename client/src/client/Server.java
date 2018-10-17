@@ -5,14 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Server {
+
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
-    
+
     public boolean startConnection(String host, int port) {
         try {
             this.clientSocket = new Socket(host, port);
@@ -25,16 +24,14 @@ public class Server {
         }
     }
 
-    public String sendMessage(String msg) {
-        try {
-            this.out.println(msg);
-            return in.readLine();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
+    public void sendMessage(String msg) {
+        this.out.println(msg);
     }
-    
+
+    public BufferedReader getIn() {
+        return this.in;
+    }
+
     public boolean stopConnection() {
         try {
             this.clientSocket.shutdownInput();
